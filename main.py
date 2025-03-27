@@ -4,7 +4,9 @@ from PIL import Image, ImageTk
 from tkinter import Toplevel
 import subprocess
 import threading
+import platform
 import json
+import sys
 import os
 
 class Tooltip:
@@ -36,16 +38,26 @@ class Tooltip:
             self.tooltip.destroy()
             self.tooltip = None
 
+def resource_path(self, relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class DiscordStyleGitLabUI:
     def __init__(self, root):
         self.root = root
         self.root.title("GitLab Manager v0.2.1")
-        try:
+        if platform.system() == "Windows":
+            try:
+                icon_path = resource_path(self, "logo.ico")
+            except tk.TclError:
+                print("Failed to load window icon")
+        else:
             icon_path = "logo.ico"
-            self.root.iconbitmap(icon_path)
-        except tk.TclError:
-            print("Failed to load window icon")
+        self.root.iconbitmap(icon_path)
         self.root.geometry("1000x800")
 
         # Farbpalette
@@ -115,7 +127,10 @@ class DiscordStyleGitLabUI:
 
         # Load and display logo
         try:
-            logo_path = "logo.ico"
+            if sys.platform == "windows":
+                logo_path = resource_path(self, "logo.ico")
+            else:
+                logo_path = "logo.ico"
             logo_image = Image.open(logo_path)
             logo_image = logo_image.resize((80, 80), Image.LANCZOS)
             logo_photo = ImageTk.PhotoImage(logo_image)
