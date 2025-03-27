@@ -83,10 +83,13 @@
 
 ```
 GitLabManager/
-├── GitLabManager.py    # Main application code
-├── config.json         # Auto-generated configuration
-├── README.md           # This documentation
-└── requirements.txt    # Python dependencies
+├── main.py
+├── config.json
+├── README.md
+├── LICENSE 
+├── logo.ico
+├── logo.png
+└── requirements.txt
 ```
 
 ## License 📜
