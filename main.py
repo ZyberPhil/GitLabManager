@@ -1,11 +1,11 @@
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
+from PIL import Image, ImageTk
+from tkinter import Toplevel
 import subprocess
-import os
 import threading
 import json
-from tkinter import Toplevel
-
+import os
 
 class Tooltip:
     def __init__(self, widget, text):
@@ -40,7 +40,12 @@ class Tooltip:
 class DiscordStyleGitLabUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("GitLab Manager - Discord Style")
+        self.root.title("GitLab Manager v0.2.1")
+        try:
+            icon_path = "logo.ico"
+            self.root.iconbitmap(icon_path)
+        except tk.TclError:
+            print("Failed to load window icon")
         self.root.geometry("1000x800")
 
         # Farbpalette
@@ -108,10 +113,26 @@ class DiscordStyleGitLabUI:
         logo_frame = ttk.Frame(self.sidebar, style="Secondary.TFrame")
         logo_frame.pack(pady=20)
 
-        ttk.Label(logo_frame,
-                  text="GitLab Manager",
-                  style="TLabel",
-                  font=("Helvetica", 14, "bold")).pack(pady=10)
+        # Load and display logo
+        try:
+            logo_path = "logo.ico"
+            logo_image = Image.open(logo_path)
+            logo_image = logo_image.resize((80, 80), Image.LANCZOS)
+            logo_photo = ImageTk.PhotoImage(logo_image)
+            self.logo_photo = logo_photo
+
+            logo_label = ttk.Label(logo_frame, image=logo_photo, style="Secondary.TLabel")
+            logo_label.pack(pady=5)
+            ttk.Label(logo_frame,
+                      text="GitLab Manager",
+                      style="TLabel",
+                      font=("Helvetica", 14, "bold")).pack(pady=5)
+        except Exception as e:
+            print(f"Failed to load logo: {e}")
+            ttk.Label(logo_frame,
+                      text="GitLab Manager",
+                      style="TLabel",
+                      font=("Helvetica", 14, "bold")).pack(pady=10)
 
         nav_buttons = [
             ("Clone Repo", self.clone_repo),
