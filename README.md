@@ -2,7 +2,7 @@
 
 **Version 0.2** - A modern GUI client for GitLab operations with Discord-inspired styling
 
-![Screenshot](https://cdn.discordapp.com/attachments/798461105407393803/1354477576231584045/BEF3A1DA-0BD7-4E12-8DCE-16CC3AD9BB81.png?ex=67e56f0b&is=67e41d8b&hm=486a969b42b9680895a59f3809922f6874301d6b79288951e811054e14ac439a&)
+![Screenshot](https://cdn.discordapp.com/attachments/798461105407393803/1354809499202093176/image.png?ex=67e6a42b&is=67e552ab&hm=94e332ca13dff5d284ff5d2909fb2030d12be5ede79fe3ee2729e194a9b3e6d0&)
 
 ## Features ✨
 
