@@ -110,6 +110,11 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
+**Version 0.2.1 Changelog**
+- icon added
+- fixed some bugs
+- added some improvements
+
 **Version 0.2 Changelog**  
 - Added Discord-style theme implementation
 - Implemented real-time console output
