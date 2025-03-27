@@ -127,7 +127,7 @@ class DiscordStyleGitLabUI:
 
         # Load and display logo
         try:
-            if sys.platform == "windows":
+            if platform.system() == "Windows":
                 logo_path = resource_path(self, "logo.ico")
             else:
                 logo_path = "logo.ico"
